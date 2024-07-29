@@ -6,20 +6,40 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import frc.robot.subsystems.swerve.Swerve;
+import frc.robot.subsystems.swerve.factories.constants.SwerveConstantsFactory;
+import frc.robot.subsystems.swerve.factories.gyro.GyroFactory;
+import frc.robot.subsystems.swerve.factories.modules.ModulesFactory;
+import frc.robot.superstructers.poseestimator.PoseEstimatorSuperstructure;
 import frc.utils.RobotTypeUtils;
 
-/**
- * This class is where the bulk of the robot should be declared. Since Command-based is a
- * "declarative" paradigm, very little robot logic should actually be handled in the {@link RobotManager}
- * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
- * subsystems, commands, and trigger mappings) should be declared here.
- */
+
 public class Robot {
 
     public static final RobotTypeUtils.RobotType ROBOT_TYPE = RobotTypeUtils.determineRobotType(RobotTypeUtils.RobotType.REAL);
 
+    public static final Swerve swerve = new Swerve(
+            SwerveConstantsFactory.create(),
+            ModulesFactory.create(),
+            GyroFactory.create()
+    );
+    public static final PoseEstimatorSuperstructure poseEstimator = new PoseEstimatorSuperstructure(swerve);
+
     public Robot() {
+        buildPathPlannerForAuto();
         configureBindings();
+    }
+
+    public Command getAutonomousCommand() {
+        return new InstantCommand();
+    }
+
+    public Swerve getSwerve() {
+        return swerve;
+    }
+
+    public PoseEstimatorSuperstructure getPoseEstimator(){
+        return poseEstimator;
     }
 
     private void initializeSubsystems() {
@@ -30,12 +50,13 @@ public class Robot {
 
     }
 
-    private void configureBindings() {
-        JoysticksBindings.configureBindings();
+    private void buildPathPlannerForAuto() {
+        // Register commands...
+        swerve.configPathPlanner(poseEstimator::getCurrentPose, poseEstimator::resetPose);
     }
 
-    public Command getAutonomousCommand() {
-        return new InstantCommand();
+    private void configureBindings() {
+        JoysticksBindings.configureBindings(this);
     }
 
 }
