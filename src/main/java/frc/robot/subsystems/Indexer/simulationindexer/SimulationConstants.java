@@ -14,11 +14,11 @@ public class SimulationConstants {
     private static final double K_I = 0;
     private static final double K_D = 0;
 
-    public PIDController getPIDController (){
+    public static PIDController getPIDController (){
         return new PIDController(K_P,K_I,K_D);
     }
 
-    public DCMotorSim getMotorSimulation (){
+    public static DCMotorSim getMotorSimulation (){
         return new DCMotorSim(
                 MOTOR_TYPE,
                 GEARING,

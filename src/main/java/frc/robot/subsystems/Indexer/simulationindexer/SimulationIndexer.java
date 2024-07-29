@@ -2,6 +2,7 @@ package frc.robot.subsystems.Indexer.simulationindexer;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.simulation.DCMotorSim;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Indexer.IIndexer;
@@ -14,10 +15,10 @@ public class SimulationIndexer implements IIndexer {
     private double inputVoltage;
     private PIDController pidController;
 
-    public SimulationIndexer(SimulationConstants constants){
-        this.motor = constants.getMotorSimulation();
+    public SimulationIndexer(){
+        this.motor = SimulationConstants.getMotorSimulation();
         this.inputVoltage = 0;
-        this.pidController = constants.getPIDController();
+        this.pidController = SimulationConstants.getPIDController();
     }
 
 
@@ -57,7 +58,7 @@ public class SimulationIndexer implements IIndexer {
 
     @Override
     public void updateInputs(IndexerInputsAutoLogged inputs) {
-        inputs.velocity = motor.getAngularVelocityRadPerSec();
+        inputs.velocity = Rotation2d.fromRadians(motor.getAngularVelocityRadPerSec()).getRotations();
         inputs.appliedOutput = inputVoltage;
         inputs.outputCurrent = motor.getCurrentDrawAmps();
         inputs.ampSwitch = SmartDashboard.getBoolean("Amper Limit Switch", false);;
