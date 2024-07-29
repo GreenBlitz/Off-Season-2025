@@ -1,8 +1,8 @@
 package frc.robot.subsystems.Indexer;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.FunctionalCommand;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
-import edu.wpi.first.wpilibj2.command.RunCommand;
 
 public class IndexerCommandsBuilder {
 
@@ -21,11 +21,23 @@ public class IndexerCommandsBuilder {
     }
 
     public Command rollByState (){
-        return new RunCommand(() -> indexer.rotateByState(), indexer);
+        return new FunctionalCommand(
+                () -> {},
+                () -> indexer.rotateByState(),
+                (isInterrupted) -> indexer.stop(),
+                () -> false,
+                indexer
+        );
     }
 
     public Command rollByPower (double power){
-        return new RunCommand(() -> indexer.rotateByPower(power), indexer);
+        return new FunctionalCommand(
+                () -> {},
+                () -> indexer.rotateByPower(power),
+                (isInterrupted) -> indexer.stop(),
+                () -> false,
+                indexer
+        );
     }
 
 }

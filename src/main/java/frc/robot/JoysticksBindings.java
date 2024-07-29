@@ -4,6 +4,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
+import frc.robot.subsystems.Indexer.IndexerCommandsBuilder;
 import frc.robot.subsystems.swerve.swervestatehelpers.AimAssist;
 import frc.robot.subsystems.swerve.swervestatehelpers.RotateAxis;
 import frc.utils.joysticks.Axis;
@@ -180,7 +181,13 @@ public class JoysticksBindings {
 
     private static void sixthJoystickButtons(Robot robot) {
         SmartJoystick usedJoystick = SIXTH_JOYSTICK;
-        // bindings...
+
+        IndexerCommandsBuilder indexerCommandsBuilder = robot.getIndexer().getCommandsBuilder();
+
+        usedJoystick.START.whileTrue(indexerCommandsBuilder.setStateSpeaker());
+        usedJoystick.BACK.whileTrue(indexerCommandsBuilder.setStateToAmp());
+
+        usedJoystick.A.whileTrue(indexerCommandsBuilder.rollByState());
     }
 
 }

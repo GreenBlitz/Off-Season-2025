@@ -9,12 +9,15 @@ public class Indexer extends GBSubsystem {
     private IIndexer indexer;
     private IndexerInputsAutoLogged inputs = new IndexerInputsAutoLogged();
     private IndexerState state;
+    private IndexerCommandsBuilder commandsBuilder;
 
     public Indexer(String logPath) {
         super(logPath);
 
-        indexer = new SimulationIndexer();
-        state = IndexerState.PASS_TO_SPEAKER;
+        this.indexer = new SimulationIndexer();
+        this.state = IndexerState.PASS_TO_SPEAKER;
+
+        this.commandsBuilder = new IndexerCommandsBuilder(this);
     }
 
     @Override
@@ -25,19 +28,27 @@ public class Indexer extends GBSubsystem {
         Logger.recordOutput(getLogPath() + "state", state);
     }
 
-    public void setState (IndexerState state){
+    public void setState(IndexerState state) {
         this.state = state;
     }
 
-    public void rotateByVelocity (double velocity){
+    public void rotateByVelocity(double velocity) {
         indexer.setVelocity(velocity);
     }
 
-    public void rotateByPower (double power){
+    public void rotateByPower(double power) {
         indexer.setPower(power);
     }
-    public void rotateByState (){
+
+    public void rotateByState() {
         rotateByPower(state.rotationMultiplier * IndexerConstants.PASSING_POWER);
+    }
+    public void stop (){
+        indexer.setPower(0);
+    }
+
+    public IndexerCommandsBuilder getCommandsBuilder (){
+        return commandsBuilder;
     }
 
 }

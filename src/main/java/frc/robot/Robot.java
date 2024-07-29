@@ -6,6 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import frc.robot.subsystems.Indexer.Indexer;
 import frc.robot.subsystems.swerve.Swerve;
 import frc.robot.subsystems.swerve.factories.constants.SwerveConstantsFactory;
 import frc.robot.subsystems.swerve.factories.gyro.GyroFactory;
@@ -25,6 +26,9 @@ public class Robot {
     );
     public static final PoseEstimatorSuperstructure poseEstimator = new PoseEstimatorSuperstructure(swerve);
 
+
+    public static final Indexer indexer = new Indexer("Indexer");
+
     public Robot() {
         buildPathPlannerForAuto();
         configureBindings();
@@ -36,6 +40,10 @@ public class Robot {
 
     public Swerve getSwerve() {
         return swerve;
+    }
+
+    public Indexer getIndexer(){
+        return indexer;
     }
 
     public PoseEstimatorSuperstructure getPoseEstimator(){

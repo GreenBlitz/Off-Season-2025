@@ -64,8 +64,8 @@ public class SimulationIndexer implements IIndexer {
         inputs.velocity = Rotation2d.fromRadians(motor.getAngularVelocityRadPerSec()).getRotations();
         inputs.appliedOutput = inputVoltage;
         inputs.outputCurrent = motor.getCurrentDrawAmps();
-        inputs.ampSwitch = SmartDashboard.getBoolean("Amper Limit Switch", false);;
-        inputs.shooterSwitch = SmartDashboard.getBoolean("Shooter Limit Switch", false);;
+        inputs.ampSwitch = SmartDashboard.getBoolean("Amper Limit Switch", false);
+        inputs.shooterSwitch = SmartDashboard.getBoolean("Shooter Limit Switch", false);
     }
 
 }
