@@ -11,5 +11,6 @@ public interface IIndexer {
     void setBrake();
 
     void setCoast();
+    void updateInputs (IndexerInputsAutoLogged inputs);
 
 }
