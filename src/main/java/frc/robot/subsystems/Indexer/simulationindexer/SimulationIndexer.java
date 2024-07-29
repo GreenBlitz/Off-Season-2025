@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Indexer.IIndexer;
 import frc.robot.subsystems.Indexer.IndexerInputsAutoLogged;
 import frc.utils.battery.BatteryUtils;
+import frc.utils.cycletime.CycleTimeUtils;
 
 public class SimulationIndexer implements IIndexer {
 
@@ -58,6 +59,8 @@ public class SimulationIndexer implements IIndexer {
 
     @Override
     public void updateInputs(IndexerInputsAutoLogged inputs) {
+        motor.update(CycleTimeUtils.DEFAULT_CYCLE_TIME_SECONDS);
+
         inputs.velocity = Rotation2d.fromRadians(motor.getAngularVelocityRadPerSec()).getRotations();
         inputs.appliedOutput = inputVoltage;
         inputs.outputCurrent = motor.getCurrentDrawAmps();
