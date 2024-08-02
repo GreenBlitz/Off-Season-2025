@@ -39,4 +39,9 @@ public class IDs {
 
     }
 
+    public static class CANSparkMAXIDs{
+        public static final int SHOOTER_UPPER_MOTOR_ID=0;
+        public static final int SHOOTER_LOWER_MOTOR_ID=1;
+    }
+
 }
