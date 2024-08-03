@@ -7,6 +7,7 @@ import frc.utils.cycletime.CycleTimeUtils;
 public class SingleJointedArmSimulation extends MotorSimulation {
 
     private final SingleJointedArmSim armSimulation;
+    private double inputVoltage;
 
     public SingleJointedArmSimulation(SingleJointedArmSim armSimulation) {
         this.armSimulation = armSimulation;
@@ -26,13 +27,18 @@ public class SingleJointedArmSimulation extends MotorSimulation {
         return Rotation2d.fromRadians(armSimulation.getVelocityRadPerSec());
     }
 
+    public double getVoltage (){
+        return inputVoltage;
+    }
+
     @Override
-    protected void setInputVoltage(double voltage) {
+    public void setInputVoltage(double voltage) {
+        this.inputVoltage = voltage;
         armSimulation.setInputVoltage(voltage);
     }
 
     @Override
-    protected void updateMotor() {
+    public void updateMotor() {
         armSimulation.update(CycleTimeUtils.getCurrentCycleTime());
     }
 
