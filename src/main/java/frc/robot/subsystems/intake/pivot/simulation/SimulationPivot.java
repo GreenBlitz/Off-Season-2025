@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.simulation.FlywheelSim;
 import frc.robot.simulation.SingleJointedArmSimulation;
 import frc.robot.subsystems.intake.pivot.IPivot;
 import frc.robot.subsystems.intake.pivot.PivotInputsAutoLogged;
+import org.littletonrobotics.junction.Logger;
 
 import static frc.robot.subsystems.intake.pivot.simulation.PivotSimulationConstants.PID_CONTROLLER;
 
@@ -33,15 +34,21 @@ public class SimulationPivot implements IPivot {
 
     @Override
     public void setPosition(Rotation2d targetPosition) {
-        setVoltage(PID_CONTROLLER.calculate(
-                armSimulation.getPosition().getDegrees(),
-                targetPosition.getDegrees()
-        ));
+        Logger.recordOutput("current",armSimulation.getPosition().getDegrees());
+        Logger.recordOutput("target",targetPosition.getDegrees());
+        double gain = PID_CONTROLLER.calculate(
+                armSimulation.getPosition().getRotations(),
+                targetPosition.getRotations()
+        );
+        Logger.recordOutput("PID gain",gain);
+        setPower(gain);
     }
 
 
     @Override
     public void updateInputs(PivotInputsAutoLogged inputs) {
+        armSimulation.updateMotor();
+
         inputs.appliedOutput = armSimulation.getVoltage();
         inputs.rotorPosition = armSimulation.getPosition();
         inputs.outputCurrent = armSimulation.getCurrent();

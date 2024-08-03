@@ -4,6 +4,7 @@ import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.wpilibj.simulation.DCMotorSim;
 import edu.wpi.first.wpilibj.simulation.SingleJointedArmSim;
+import frc.robot.subsystems.intake.pivot.PivotConstants;
 
 public class PivotSimulationConstants {
 
@@ -21,10 +22,10 @@ public class PivotSimulationConstants {
             0,
             Math.toRadians(90),
             false,
-            Math.toRadians(90)
+            PivotConstants.CLOSED_POSITION.getRadians()
     );
 
-    protected static PIDController PID_CONTROLLER = new PIDController(1,0,0);
+    protected static PIDController PID_CONTROLLER = new PIDController(4,0,0);
 
 
 }
