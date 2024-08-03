@@ -1,8 +1,6 @@
 package frc.robot.subsystems.intake.pivot.simulation;
 
-import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.wpilibj.simulation.FlywheelSim;
 import frc.robot.simulation.SingleJointedArmSimulation;
 import frc.robot.subsystems.intake.pivot.IPivot;
 import frc.robot.subsystems.intake.pivot.PivotInputsAutoLogged;
@@ -50,7 +48,7 @@ public class SimulationPivot implements IPivot {
         armSimulation.updateMotor();
 
         inputs.appliedOutput = armSimulation.getVoltage();
-        inputs.rotorPosition = armSimulation.getPosition();
+        inputs.motorPosition = armSimulation.getPosition();
         inputs.outputCurrent = armSimulation.getCurrent();
 
         inputs.encoderPosition = armSimulation.getPosition();

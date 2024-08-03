@@ -24,6 +24,7 @@ public class IDs {
         public static final CTREDeviceID BACK_RIGHT_STEER_MOTOR = new CTREDeviceID(6, BusChain.CANIVORE);
 
         public static final CTREDeviceID BACK_RIGHT_DRIVE_MOTOR = new CTREDeviceID(7, BusChain.CANIVORE);
+        public static final CTREDeviceID PIVOT_MOTOR = new CTREDeviceID(8,BusChain.CANIVORE);
 
     }
 
@@ -36,6 +37,7 @@ public class IDs {
         public static final CTREDeviceID BACK_LEFT_ENCODER = new CTREDeviceID(2, BusChain.CANIVORE);
 
         public static final CTREDeviceID BACK_RIGHT_ENCODER = new CTREDeviceID(3, BusChain.CANIVORE);
+        public static final CTREDeviceID INTAKE_PIVOT_ENCODER = new CTREDeviceID(4,BusChain.CANIVORE);
 
     }
 

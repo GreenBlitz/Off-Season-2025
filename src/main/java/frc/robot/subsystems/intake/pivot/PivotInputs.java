@@ -6,7 +6,7 @@ import org.littletonrobotics.junction.AutoLog;
 @AutoLog
 public class PivotInputs {
 
-    public Rotation2d rotorPosition;
+    public Rotation2d motorPosition;
     public Rotation2d encoderPosition;
     public double appliedOutput;
     public double outputCurrent;
