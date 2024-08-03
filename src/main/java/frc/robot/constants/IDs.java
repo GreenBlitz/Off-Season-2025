@@ -41,4 +41,8 @@ public class IDs {
 
     }
 
+    public static class CANSparkMAXIDs {
+        public static final int INTAKE_ROLLER_ID = 1;
+    }
+
 }

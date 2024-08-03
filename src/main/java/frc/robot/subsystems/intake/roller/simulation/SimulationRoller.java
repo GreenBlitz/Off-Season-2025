@@ -1,9 +1,7 @@
 package frc.robot.subsystems.intake.roller.simulation;
 
-import edu.wpi.first.math.MathUsageId;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.wpilibj.simulation.BatterySim;
 import edu.wpi.first.wpilibj.simulation.DCMotorSim;
 import frc.robot.subsystems.intake.roller.IRoller;
 import frc.robot.subsystems.intake.roller.RollerInputsAutoLogged;
