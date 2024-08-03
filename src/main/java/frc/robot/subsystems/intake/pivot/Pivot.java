@@ -18,8 +18,8 @@ public class Pivot extends GBSubsystem {
         super(LOG_PATH);
 
         this.inputs = new PivotInputsAutoLogged();
-        this.pivot = new SimulationPivot();
-        this.state = PivotState.OPEN;
+        this.pivot = PivotFactory.createPivot();
+        this.state = PivotState.CLOSED;
         this.pivotCommands = new PivotCommands(this);
     }
 
