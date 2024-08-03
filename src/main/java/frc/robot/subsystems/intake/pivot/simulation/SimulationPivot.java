@@ -15,7 +15,7 @@ public class SimulationPivot implements IPivot {
     private SingleJointedArmSimulation armSimulation;
 
     public SimulationPivot (){
-        armSimulation = new SingleJointedArmSimulation(
+        this.armSimulation = new SingleJointedArmSimulation(
                 PivotSimulationConstants.ARM_SIMULATION
         );
 
