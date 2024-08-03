@@ -10,6 +10,4 @@ public class RollerInputs {
     public double outputCurrent;
     public boolean isNoteIn;
 
-
-
 }

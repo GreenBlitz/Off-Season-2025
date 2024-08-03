@@ -1,6 +1,5 @@
 package frc.robot.subsystems.intake.pivot;
 
-import frc.robot.subsystems.intake.pivot.simulation.SimulationPivot;
 import frc.utils.GBSubsystem;
 import org.littletonrobotics.junction.Logger;
 

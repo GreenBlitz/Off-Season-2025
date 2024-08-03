@@ -3,7 +3,6 @@ package frc.robot.subsystems.intake.pivot;
 import edu.wpi.first.math.geometry.Rotation2d;
 import frc.robot.subsystems.intake.pivot.simulation.SimulationPivot;
 import frc.robot.subsystems.intake.pivot.talonfx.TalonFXPivot;
-import frc.utils.RobotTypeUtils;
 
 import static frc.robot.Robot.ROBOT_TYPE;
 

@@ -1,7 +1,6 @@
 package frc.robot.subsystems.intake.pivot.talonfx;
 
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
-import frc.utils.devicewrappers.TalonFXWrapper;
 
 public class TalonFXPivotConstants {
 
