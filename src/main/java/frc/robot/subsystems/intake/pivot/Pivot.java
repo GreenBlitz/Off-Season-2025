@@ -3,22 +3,21 @@ package frc.robot.subsystems.intake.pivot;
 import frc.robot.subsystems.intake.pivot.simulation.SimulationPivot;
 import frc.utils.GBSubsystem;
 
+import static frc.robot.subsystems.intake.pivot.PivotConstants.CLOSED_POSITION;
 import static frc.robot.subsystems.intake.pivot.PivotConstants.LOG_PATH;
+import static frc.robot.subsystems.intake.pivot.PivotConstants.OPEN_POSITION;
 
 public class Pivot extends GBSubsystem {
 
     private PivotInputsAutoLogged inputs;
     private IPivot pivot;
+    private PivotState state;
     public Pivot() {
         super(LOG_PATH);
 
         this.inputs = new PivotInputsAutoLogged();
         this.pivot = new SimulationPivot();
-    }
-
-    @Override
-    protected void subsystemPeriodic() {
-        pivot.updateInputs(inputs);
+        this.state = PivotState.CLOSED;
     }
 
     public void setPower (double power){
@@ -27,6 +26,22 @@ public class Pivot extends GBSubsystem {
 
     public void setVoltage (double voltage){
         pivot.setVoltage(voltage);
+    }
+
+    @Override
+    protected void subsystemPeriodic() {
+        pivot.updateInputs(inputs);
+        switch (state){
+            case OPEN -> handleOpen();
+            case CLOSED -> handleClosed();
+        }
+    }
+
+    private void handleOpen (){
+        pivot.setPosition(OPEN_POSITION);
+    }
+    private void handleClosed (){
+        pivot.setPosition(CLOSED_POSITION);
     }
 
 
