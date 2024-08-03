@@ -21,11 +21,11 @@ public class TalonFXPivot implements IPivot {
     private TalonFXWrapper motor;
     private CANcoder canCoder;
     private PositionVoltage positionControl;
-    private StatusSignal<Double> motorPositionSignal;
-    private StatusSignal<Double> motorVoltageSignal;
-    private StatusSignal<Double> motorCurrentSignal;
-    private StatusSignal<Double> encoderPositionSignal;
-    private StatusSignal<Double> encoderVoltageSignal;
+    private final StatusSignal<Double> motorPositionSignal;
+    private final StatusSignal<Double> motorVoltageSignal;
+    private final StatusSignal<Double> motorCurrentSignal;
+    private final StatusSignal<Double> encoderPositionSignal;
+    private final StatusSignal<Double> encoderVoltageSignal;
     public TalonFXPivot (){
         this.motor = new TalonFXWrapper(PIVOT_MOTOR);
         this.canCoder = new CANcoder(INTAKE_PIVOT_ENCODER.ID(),INTAKE_PIVOT_ENCODER.busChain().getChainName());
