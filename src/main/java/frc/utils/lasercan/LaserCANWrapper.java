@@ -11,7 +11,7 @@ public class LaserCANWrapper {
         laserCan = new LaserCan(controllerAreNetworkBusId);
     }
 
-    public boolean setRangingMode(LaserCan.RangingMode mode) throws ConfigurationFailedException {
+    public boolean setRangingMode(LaserCan.RangingMode mode){
         try {
             laserCan.setRangingMode(mode);
         }
@@ -22,7 +22,7 @@ public class LaserCANWrapper {
         return true;
     }
 
-    public boolean setRegionOfInterest(LaserCan.RegionOfInterest regionOfInterest) throws ConfigurationFailedException {
+    public boolean setRegionOfInterest(LaserCan.RegionOfInterest regionOfInterest){
         try {
             laserCan.setRegionOfInterest(regionOfInterest);
         }
