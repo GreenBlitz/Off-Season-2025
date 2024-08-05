@@ -45,4 +45,8 @@ public class IDs {
         public static final int INTAKE_ROLLER_ID = 1;
     }
 
+    public static class LaseCANIDs{
+        public static final int INTAKE_LASERCAN_ID = 1;
+    }
+
 }
